@@ -30,7 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
@@ -129,7 +129,6 @@ fun BMIMeter(
 
         if (barWidthPx > 0f) {
             NumberTicks(
-                totalWidthPx = barWidthPx.roundToInt(),
                 ticks = numberTicks
             )
         } else {
@@ -185,21 +184,25 @@ fun BMIMeter(
 
 @Composable
 private fun NumberTicks(
-    totalWidthPx: Int,
-    ticks: List<Double>
+    ticks: List<Double>,
 ) {
-    SubcomposeLayout(modifier = Modifier.fillMaxWidth()) { constraints ->
-        val measurables = ticks.map { t ->
-            val label = if (t == t.toInt().toDouble()) t.toInt().toString() else "%.1f".format(t)
-            subcompose("tick-$t") { Text(text = label, textAlign = TextAlign.Center) }.first()
+    Layout(
+        content = {
+            ticks.forEach { t ->
+                val label = if (t == t.toInt().toDouble()) t.toInt().toString() else "%.1f".format(t)
+                Text(text = label, textAlign = TextAlign.Center)
+            }
+        },
+        modifier = Modifier.fillMaxWidth()
+    ) { measurables, constraints ->
+        val placeables = measurables.map {
+            it.measure(constraints.copy(minWidth = 0, minHeight = 0))
         }
-        val placeables =
-            measurables.map { it.measure(constraints.copy(minWidth = 0, minHeight = 0)) }
 
         val w = constraints.maxWidth
         val h = placeables.maxOfOrNull { it.height } ?: 0
 
-        fun xAt(v: Double) = (totalWidthPx * (v / BMI_MAX)).roundToInt()
+        fun xAt(v: Double) = (w * (v / BMI_MAX)).roundToInt()
 
         layout(w, h) {
             ticks.indices.forEach { i ->
