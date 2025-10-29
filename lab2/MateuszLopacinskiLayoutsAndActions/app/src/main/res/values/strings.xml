@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MateuszLopacinskiLayoutsAndActions</string>
+    <string name="hello_string">Hello There From XML File</string>
+</resources>
