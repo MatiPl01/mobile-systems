@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MateuszLopacinskiLayoutsAndActions</string>
     <string name="hello_string">Hello There From XML File</string>
+    <string name="write_to_logcat">Write to LogCat</string>
+    <string name="write_to_logcat_listener">Write to LogCat - Listener</string>
+    <string name="display_toast_message">Display Toast Message</string>
+    <string name="write_to_textview">Write to TextView</string>
+    <string name="we_write_here_something">We write here something</string>
+    <string name="i_love_this_game">I love this game</string>
+    <string name="data_binding_should_work_here">Data Binding Should Work Here</string>
 </resources>

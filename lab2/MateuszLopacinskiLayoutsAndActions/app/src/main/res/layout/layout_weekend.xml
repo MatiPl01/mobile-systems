@@ -3,18 +3,26 @@
     android:id="@+id/weekend"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@android:color/white">
 
-    <EditText
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="REMEMBER" />
+        android:background="#2566A8"
+        android:text="Remember"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="20sp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/weekend" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/weekend"
+        android:adjustViewBounds="true" />
 
 </LinearLayout>

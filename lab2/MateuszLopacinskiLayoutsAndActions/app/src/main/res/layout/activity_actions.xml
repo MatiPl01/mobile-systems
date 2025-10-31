@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<layout>-->
+<!--    <data>-->
+<!--        <variable name="user" type="com.example.mateuszlopacinskilayoutsandactions.User" />-->
+<!--    </data>-->
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_actions"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/write_to_logcat"
+            android:textSize="30sp"
+            android:onClick="writeToLogCat"/>
+
+        <Button
+            android:id="@+id/btn_write_to_logcat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/write_to_logcat_listener"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btn_display_toast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/display_toast_message"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_write_something"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="@string/we_write_here_something"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/btn_write_to_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/write_to_textview"
+            android:textSize="30sp" />
+        
+<!--        <EditText-->
+<!--            android:id="@+id/et_data_binding"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:textSize="30sp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:textAlignment="center"-->
+<!--            android:hint="@string/data_binding_should_work_here"-->
+<!--            android:text="@{user.firstName + ' ' + user.lastName}" />-->
+    </LinearLayout>
+<!--</layout>-->
