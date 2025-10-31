@@ -8,4 +8,7 @@
     <string name="we_write_here_something">We write here something</string>
     <string name="i_love_this_game">I love this game</string>
     <string name="data_binding_should_work_here">Data Binding Should Work Here</string>
+    <string name="update_user_data">Update User Data</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last name</string>
 </resources>

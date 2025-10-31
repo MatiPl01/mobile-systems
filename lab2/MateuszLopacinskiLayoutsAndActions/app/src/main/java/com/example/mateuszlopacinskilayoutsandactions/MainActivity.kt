@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
 import com.example.mateuszlopacinskilayoutsandactions.databinding.ActivityActionsBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,8 +21,12 @@ class MainActivity : AppCompatActivity() {
     enableEdgeToEdge()
 
     binding = ActivityActionsBinding.inflate(layoutInflater)
-//    user = User("Mateusz", "Łopaciński")
-//    binding.user = user
+    user = ViewModelProvider(this)[User::class.java]
+    user.firstName = MutableLiveData("Alexander")
+    user.lastName = MutableLiveData("TheGreat")
+
+    binding.user = user
+
     setContentView(binding.root)
 
     ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activity_actions)) { v, insets ->
@@ -31,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     setWriteToLogCatButtonListener()
     setDisplayToastButtonListener()
     setWriteToTextViewButtonListener()
+    setUpdateUserDataButtonListener()
   }
 
   fun writeToLogCat(view: View) {
@@ -50,8 +57,14 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun setWriteToTextViewButtonListener() {
-//    binding.btnWriteToTextview.setOnClickListener {
-//      binding.tvWriteSomething.text = getString(R.string.i_love_this_game)
-//    }
+    binding.btnWriteToTextview.setOnClickListener {
+      binding.tvWriteSomething.text = getString(R.string.i_love_this_game)
+    }
+  }
+
+  private fun setUpdateUserDataButtonListener() {
+    binding.btnUpdateUserData.setOnClickListener {
+      binding.tvWriteSomething.text = user.firstName.value + " " + user.lastName.value
+    }
   }
 }

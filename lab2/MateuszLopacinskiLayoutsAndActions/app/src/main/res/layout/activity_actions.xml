@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<layout>-->
-<!--    <data>-->
-<!--        <variable name="user" type="com.example.mateuszlopacinskilayoutsandactions.User" />-->
-<!--    </data>-->
+<layout>
+    <data>
+        <variable name="user" type="com.example.mateuszlopacinskilayoutsandactions.User" />
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/activity_actions"
@@ -50,14 +50,29 @@
             android:text="@string/write_to_textview"
             android:textSize="30sp" />
         
-<!--        <EditText-->
-<!--            android:id="@+id/et_data_binding"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:textSize="30sp"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:textAlignment="center"-->
-<!--            android:hint="@string/data_binding_should_work_here"-->
-<!--            android:text="@{user.firstName + ' ' + user.lastName}" />-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_marginTop="30dp"
+            android:textAlignment="center"
+            android:hint="@string/first_name"
+            android:text="@={user.firstName}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:hint="@string/last_name"
+            android:text="@={user.lastName}" />
+
+        <Button
+            android:id="@+id/btn_update_user_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/update_user_data"
+            android:textSize="30sp" />
     </LinearLayout>
-<!--</layout>-->
+</layout>
