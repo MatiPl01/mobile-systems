@@ -64,7 +64,12 @@ class MainActivity : AppCompatActivity() {
 
   private fun setUpdateUserDataButtonListener() {
     binding.btnUpdateUserData.setOnClickListener {
-      binding.tvWriteSomething.text = user.firstName.value + " " + user.lastName.value
+      val fullName = getString(
+        R.string.user_full_name,
+      user.firstName.value,
+        user.lastName.value
+      )
+      binding.tvWriteSomething.text = fullName
     }
   }
 }

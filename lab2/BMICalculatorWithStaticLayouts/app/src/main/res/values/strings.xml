@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BMICalculatorWithStaticLayouts</string>
+    <string name="weight_label">Type your weight in KG</string>
+    <string name="height_label">Type your height in M</string>
+    <string name="calculate_button">Calculate my BMI</string>
+    <string name="bmi_result">Your BMI: %1$s</string>
+    <string name="bmi_placeholder">—</string>
+    <string name="underweight">Underweight</string>
+    <string name="healthy">Healthy</string>
+    <string name="overweight">Overweight</string>
+    <string name="obesity">Obesity</string>
+    <string name="extreme_obesity">Extreme obesity</string>
+</resources>

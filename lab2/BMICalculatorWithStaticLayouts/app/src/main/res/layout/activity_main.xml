@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.bmicalculatorwithstaticlayouts.BmiViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/weightInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:hint="@string/weight_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/weightEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:text="@={viewModel.weightText}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/heightInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/height_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weightInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/heightEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:text="@={viewModel.heightText}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/calculateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/calculate_button"
+            android:onClick="@{viewModel::calculateBmi}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heightInputLayout" />
+
+        <TextView
+            android:id="@+id/bmiResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.bmiResultText}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calculateButton" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bmiMeterContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="32dp"
+            android:minHeight="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bmiResultText">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.02" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide18_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.464" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide24_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.617" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide29_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.738" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide34_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.859" />
+
+            <TextView
+                android:id="@+id/label0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/guide0"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/label18_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18.5"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/guide18_5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/label24_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24.9"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/guide24_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/label29_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="29.9"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/guide29_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/label34_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="34.9"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/guide34_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/bmiBarContainer"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:clipToPadding="false"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/bmiBarBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="40">
+
+                <View
+                    android:id="@+id/bmiSegment1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18.5"
+                    android:background="@color/bmi_underweight" />
+
+                <View
+                    android:id="@+id/bmiSegment2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6.4"
+                    android:background="@color/bmi_healthy" />
+
+                <View
+                    android:id="@+id/bmiSegment3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5.0"
+                    android:background="@color/bmi_overweight" />
+
+                <View
+                    android:id="@+id/bmiSegment4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5.0"
+                    android:background="@color/bmi_obesity" />
+
+                <View
+                    android:id="@+id/bmiSegment5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5.1"
+                    android:background="@color/bmi_obesity" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:id="@+id/thresholdMarker1"
+                android:layout_width="2dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@id/guide18_5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/thresholdMarker2"
+                android:layout_width="2dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@id/guide24_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/thresholdMarker3"
+                android:layout_width="2dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@id/guide29_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/thresholdMarker4"
+                android:layout_width="2dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@id/guide34_9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/bmiIndicator"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/bmi_indicator"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bmiBarContainer"
+                app:layout_constraintBottom_toBottomOf="@id/bmiBarContainer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
