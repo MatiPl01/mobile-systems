@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MateuszLopacinskiLaboratory3_Fragments</string>
+    <string name="go_to_second_activity">Go To Second Activity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go_to_second_activity_fragment_btn">Go To Second Activity</string>
+</resources>

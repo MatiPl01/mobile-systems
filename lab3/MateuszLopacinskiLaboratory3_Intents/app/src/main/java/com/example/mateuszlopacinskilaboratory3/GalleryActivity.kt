@@ -2,29 +2,25 @@ package com.example.mateuszlopacinskilaboratory3
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.example.mateuszlopacinskilaboratory3.ui.theme.MateuszLopacinskiLaboratory3Theme
 
-class MainActivity : ComponentActivity() {
+class GalleryActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
+    val forwardedText = intent.getStringExtra("nazwa") ?: "Android"
+
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
     setContent {
@@ -34,8 +30,8 @@ class MainActivity : ComponentActivity() {
             .fillMaxSize()
             .safeContentPadding()
         ) { innerPadding ->
-          FirstActivityWidgets(
-            buttonText = "Android",
+          GalleryActivityWidgets(
+            forwardedText = forwardedText,
             modifier = Modifier.padding(innerPadding)
           )
         }
@@ -45,26 +41,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun FirstActivityWidgets(
-  buttonText: String, modifier:
-  Modifier = Modifier
-) {
+fun GalleryActivityWidgets(forwardedText: String, modifier: Modifier = Modifier) {
   val context = LocalContext.current
-  val textForIntent = remember {
-    mutableStateOf("")
-  }
 
   Column {
-    TextField(value = textForIntent.value, onValueChange = {
-      textForIntent.value = it
-    })
-    Button(modifier = modifier, onClick = {
-      val intent =
-        Intent(context, GalleryActivity::class.java)
-          .putExtra("nazwa", textForIntent.value)
-      context.startActivity(intent)
-    }) {
-      Text(buttonText)
+    Text(text = "Hello $forwardedText!")
+
+    Button(
+      modifier = modifier,
+      onClick = {
+        val intent = Intent(context, MainActivity::class.java)
+        context.startActivity(intent)
+      },
+    ) {
+      Text("Go back")
     }
   }
 }
